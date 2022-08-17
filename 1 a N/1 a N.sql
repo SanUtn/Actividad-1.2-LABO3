@@ -1,0 +1,23 @@
+/*
+1:N Un cliente puede tener muchas ventas asociadas
+*/
+
+CREATE DATABASE Actividad_1_2_2
+GO
+USE Actividad_1_2_2
+GO
+
+CREATE TABLE Cliente(
+	IDCliente SMALLINT PRIMARY KEY IDENTITY(1,1),
+	DNI INT NOT NULL UNIQUE CHECK (DNI > 0),
+	Nombre VARCHAR(25) NOT NULL,
+	Apellido VARCHAR(25) NOT NULL,
+	Email VARCHAR(25) NULL
+)
+GO
+CREATE TABLE Venta(
+	CodigoVenta INT PRIMARY KEY,
+	IDCliente SMALLINT NOT NULL FOREIGN KEY REFERENCES Cliente (IDCliente),
+	Valor MONEY NOT NULL CHECK (Valor > 0)
+)
+GO

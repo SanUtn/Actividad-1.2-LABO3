@@ -1,0 +1,20 @@
+/*
+1:1 Un Cliente va a tener un solo email
+*/
+
+CREATE DATABASE Actividad_1_2 
+GO
+USE Actividad_1_2
+GO
+CREATE TABLE Cliente(
+	IDCliente SMALLINT PRIMARY KEY IDENTITY(1,1),
+	DNI INT NOT NULL UNIQUE CHECK (DNI > 0),
+	Nombre VARCHAR(25) NOT NULL,
+	Apellido VARCHAR(25) NOT NULL,
+) 
+GO
+CREATE TABLE Email_Cliente(
+	IDCliente SMALLINT NOT NULL FOREIGN KEY REFERENCES Cliente(IDCliente) PRIMARY KEY,
+	Email VARCHAR(25) NOT NULL UNIQUE
+)
+GO
